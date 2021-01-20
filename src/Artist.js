@@ -20,19 +20,6 @@ const Artist = ({ artist }) => {
         src={images[0] && images[0].url}
         alt="artist-profile"
       />
-      {/* <br />
-      <div>
-        <h4>List of available images</h4>
-        {images.map((images, i) => {
-          return (
-            <img
-              key={images.url}
-              src={artist.images[i].url}
-              alt="gallery-images"
-            />
-          );
-        })}
-      </div> */}
     </div>
   );
 };

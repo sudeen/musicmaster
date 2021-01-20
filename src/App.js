@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import { FormGroup, FormControl, InputGroup, Glyphicon } from "react-bootstrap";
 import Artist from "./Artist";
 import Tracks from "./Tracks";
 
@@ -20,8 +19,17 @@ class App extends Component {
   //     this.search();
   //   }
 
-  search() {
-    console.log("this.state", this.state);
+  updateArtistQuery = (event) => {
+    this.setState({ query: event.target.value });
+  };
+
+  handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      this.searchArtist();
+    }
+  };
+
+  searchArtist = () => {
     fetch(`${API_ADDRESS}/artist/${this.state.query}`)
       .then((response) => response.json())
       .then((json) => {
@@ -36,33 +44,19 @@ class App extends Component {
         }
       })
       .catch((error) => alert(error.message));
-  }
+  };
 
   render() {
-    console.log("this.state", this.state);
     return (
       <div className="App">
         <div className="App-title">Music Master</div>
-        <FormGroup>
-          <InputGroup>
-            <FormControl
-              type="text"
-              placeholder="Search an Artist...."
-              value={this.state.query}
-              onChange={(event) => {
-                this.setState({ query: event.target.value });
-              }}
-              onKeyPress={(event) => {
-                if (event.key === "Enter") {
-                  this.search();
-                }
-              }}
-            />
-            <InputGroup.Addon onClick={() => this.search()}>
-              <Glyphicon glyph="search"></Glyphicon>
-            </InputGroup.Addon>
-          </InputGroup>
-        </FormGroup>
+        <input
+          className="input-field"
+          onChange={this.updateArtistQuery}
+          onKeyPress={this.handleKeyPress}
+          placeholder="Search for and Artist..."
+        />
+        <button onClick={this.searchArtist}>Search</button>
 
         <div className="Profile">
           <Artist artist={this.state.artist} />
