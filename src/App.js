@@ -16,6 +16,10 @@ class App extends Component {
     };
   }
 
+  //   componentDidMount() {
+  //     this.search();
+  //   }
+
   search() {
     console.log("this.state", this.state);
     fetch(`${API_ADDRESS}/artist/${this.state.query}`)
