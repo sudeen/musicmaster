@@ -48,13 +48,23 @@ body {
   opacity: 0.8;
 }
 
-.input-field {
-  width: 700px;
+.input-form input[type="text"] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
 }
 
-/* .play {
-  border-top: 10px solid white;
-  border-bottom: 10px solid white;
-  border-left: 20px solid black;
-  height: 0px;
-} */
+.input-form button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
